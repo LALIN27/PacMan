@@ -17,14 +17,14 @@ import java.util.Random;
 public class PacmanGame extends Game {
   private ArrayList<Point> points;
   private final Pacman pacman;
-  
+  private final Ghost ghost;
 
   public PacmanGame(String title, int width, int height) {
     super(title, width, height);
     points = new ArrayList<Point>();
     initPoints();
     pacman = new Pacman(320, 240, 32, 32, Color.YELLOW);
-    
+    ghost = new Ghost(0, 0, 32, 32, Color.RED);
   }
 
   private void initPoints() {
@@ -39,7 +39,7 @@ public class PacmanGame extends Game {
   @Override
   public void update() {
     pacman.update();
-    
+    ghost.update();
     checkCollisions();
   }
 
@@ -59,6 +59,6 @@ public class PacmanGame extends Game {
       points.get(i).render(g);
     }
     pacman.render(g);
-    
+    ghost.render(g);
   }
 }
